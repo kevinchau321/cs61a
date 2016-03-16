@@ -1,0 +1,10 @@
+(fact (food-chain ?creature1 ?creature2) (eats ?creature1 ?creature3) (eats ?creature3 ?creature2))
+
+(fact (eats shark big-fish))
+(fact (eats big-fish small-fish))
+(fact (eats domo kittens))
+(fact (eats kittens small-fish))
+(fact (eats zombie brains))
+(fact (append (1 2) (3 4) (1 2 3 4)))
+
+(fact (eats small-fish shrimp))

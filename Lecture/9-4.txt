@@ -1,0 +1,1 @@
+assignment statements: names on the left, = , expression on the left

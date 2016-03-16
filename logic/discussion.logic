@@ -1,0 +1,32 @@
+;Discussion: Logic
+
+;Equal fact
+(fact (equal ?x ?X))
+
+(fact (complementary A T))
+(fact (complementary T A))
+(fact (complementary C G))
+(fact (complementary G C))
+
+(fact(pokemon (Name Bulbasaur) (Number 001) (Color Green) (Type Grass)))
+(fact(pokemon (Name Charmander) (Number 004) (Color Red) (Type Fire)))
+(fact(pokemon (Name Squirtle) (Number 007) (Color Bue) (Type Water)))
+(fact(pokemon (Name Caterpie) (Number 010) (Color Green) (Type Bug)))
+(fact(pokemon (Name Pikachu) (Number 025) (Color Yellow) (Type Electric)))
+
+(fact (sells-same ?store1 ?store2)
+	(sells ?store1 ?item)
+	(sells ?store2 ?item))
+
+
+(fact (sells supermarket groceries))
+(fact (sells farmers-market groceries))
+(fact (sells starbucks coffee))
+(query (sells-same supermarket farmers-market))
+;expect Success!
+
+(fact (member a (a b c)))
+(fact (member b (a b c)))
+(fact (member c (a b c)))
+
+(fact (member a (a b c)))

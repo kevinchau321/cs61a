@@ -1,0 +1,59 @@
+(fact (member ?x (?x)))
+(fact (member ?x (?f . ?r))
+      (member ?x (?f)))
+(fact (member ?x (?f . ?r))
+		(member ?x ?r))
+      
+
+
+(fact (taller andy bob))
+(fact (taller charlie bob))
+(fact (taller dan andy))
+(fact (taller dan charlie))
+
+(fact (plus-one 0 1))
+(fact (plus-one 1 2))
+(fact (plus-one 2 3))
+(fact (plus-one 3 4))
+
+
+(fact (length () 0))
+(fact (length (?f . ?r) ?len)
+      (length ?r ?len-r)
+      (plus-one ?len-r ?len))
+
+
+
+(fact (list? ()))
+(fact (list? (?x . ?y))
+      (list? ?y))
+
+
+(fact (odd-len (?x)))
+(fact (odd-len (?first ?second . ?rest))
+               (odd-len ?rest))
+
+(query (odd-len (one two three)))
+
+(fact (even-len (?x ?y)))
+(fact (even-len (?first ?second . ?rest))
+      (even-len ?rest))
+
+(query (even-len (1 2 2 3)))
+
+(fact (append () ?x (?x)))
+(fact (append (?f . ?r) ?x (?f . ?result))
+      (append ?r ?x ?result))
+
+(query (append (1 2) 3 ?what))
+
+(fact (interleave () () ()))
+(fact (interleave () (?x) (?x)))
+(fact (interleave (?x) () (?x)))
+(fact (interleave (?f1 . ?r1) (?f2 . ?r2) (?f1 ?f2 . ?r-interleave))
+      (interleave ?r1 ?r2 ?r-interleave))
+
+(query (interleave (1 3 5) (2 4) ?what))
+
+
+

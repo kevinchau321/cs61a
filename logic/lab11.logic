@@ -1,0 +1,30 @@
+(fact (food-chain ?creature1 ?creature2) (eats ?creature1 ?creature3) (eats ?creature3 ?creature2))
+
+(fact (eats shark big-fish))
+(fact (eats big-fish small-fish))
+(fact (eats domo kittens))
+(fact (eats kittens small-fish))
+(fact (eats zombie brains))
+(fact (append (1 2) (3 4) (1 2 3 4)))
+
+(fact (eats small-fish shrimp))
+
+(fact (food-chain-v2 ?a ?b) (eats ?a ?b))
+(fact (food-chain-v2 ?a ?b) (eats ?a ?c) (food-chain-v2 ?c ?b))
+
+(fact (append () ?b ?b))
+(fact (append (?a . ?r) ?y (?a . ?z)) (append ?r ?y ?z))
+
+
+
+(fact (last-element ?lst ?x) (append ?lst-last (?x) ?lst))
+
+;(fact (contains ?elem ?lst) (append ?sublst1 ?elem ?sublst2) (contains ?sublst2 ;lst?) (contains ?sublst1 ?lst))
+
+(fact (contains ?elem ?lst) (contains ?elem ?sublst) (contains ?sublst ?lst))
+
+;(query (prefix (1 2 3) (1 2 3 4 5)))
+;expect success
+
+(fact (prefix () ?any-list))
+(fact (prefix (?car . ?cdr) (?car . ?rest)) (prefix ?cdr ?rest))

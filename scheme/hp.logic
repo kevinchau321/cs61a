@@ -1,0 +1,111 @@
+;;; Facts about the families of the fictional 'Harry Potter' universe.
+(fact (married arthur molly))
+(fact (married molly arthur))
+
+(fact (father arthur bill))
+(fact (father arthur charlie))
+(fact (father arthur percy))
+(fact (father arthur fred))
+(fact (father arthur george))
+(fact (father arthur ron))
+(fact (father arthur ginny))
+
+(fact (mother molly bill))
+(fact (mother molly charlie))
+(fact (mother molly percy))
+(fact (mother molly fred))
+(fact (mother molly george))
+(fact (mother molly ron))
+(fact (mother molly ginny))
+
+(fact (father james harry))
+(fact (mother lily harry))
+
+(fact (married harry ginny))
+(fact (married ginny harry))
+
+(fact (father harry james_sirius))
+(fact (father harry albus_severus))
+(fact (father harry lily_luna))
+
+(fact (mother ginny james_sirius))
+(fact (mother ginny albus_severus))
+(fact (mother ginny lily_luna))
+
+(fact (married ron hermione))
+(fact (married hermione ron))
+
+(fact (father ron rose))
+(fact (father ron hugo))
+
+(fact (mother hermione rose))
+(fact (mother hermione hugo))
+
+(fact (married bill fleur))
+(fact (married fleur bill))
+
+(fact (father bill victoire))
+(fact (father bill louis))
+(fact (father bill dominique))
+
+(fact (mother fleur victoire))
+(fact (mother fleur louis))
+(fact (mother fleur Dominique))
+
+(fact (parent ?who ?child)
+      (father ?who ?child))
+
+(fact (parent ?who ?child)
+      (mother ?who ?child))
+
+;Question 1
+
+(query (mother molly ?child))
+
+(query (married ?spouse1 ?spouse2))
+
+(fact (sibling ?sibling1 ?sibling2) (parent ?parent ?sibling1) (parent ?parent ?sibling2))
+
+(query (sibling ron fred))
+;expect success
+(query (sibling fred ?who))
+; expect Success! ; who: bill ; who: charlie ; who: percy ; who: fred ; who: george ; who: ron 
+
+
+
+;Question 2
+
+(fact (append () ?b ?b))
+(fact (append (?car . ?cdr) ?b (?car . ?rest))
+		(append ?cdr ?b ?rest))
+
+(query (append (1 2 3) (4 5 6) (1 2 3 4 5 6)))
+(query (append ?x (7 4 6) (2 8 3 7 4 6)))
+
+(fact (reverse () ()))
+(fact (reverse (?car . ?cdr) ?WTF) (reverse ?cdr ?result) (append ?result (?car) ?WTF))
+
+(query (reverse (1 2 3) (3 2 1)))
+(query (reverse (1 2 3) ?y))
+
+
+(fact (member ?x (?x)))
+(fact (member ?x (?car . ?cdr)) (member ?x (?car)))
+(fact (member ?x (?car . ?cdr)) (member ?x ?cdr))
+(query (member 3 (7 4 3)))
+
+
+(fact (equal-lists ?lst ?lst))
+(fact (equal-lists (?car1 . ?cdr1) (?car1 . ?cdr1)) (equal-lists ?car1 ?car2)
+      (equal-lists ?cdr1 ?cdr2))
+(query (equal-lists (1 8 2) (1 8 2)))
+
+
+;Question 3
+(fact (complementary t a))
+(fact (complementary a t))
+(fact (complementary c g))
+(fact (complementary g c))
+
+(fact (rev-comp-strand ?x ?y) (complementary ?x ?y))
+(fact (rev-comp-strand (?car . ?cdr) (?result)) (reverse ?result ?comp) (complementary ?car 

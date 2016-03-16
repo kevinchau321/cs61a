@@ -1,0 +1,50 @@
+(fact (food-chain ?creature1 ?creature2) (eats ?creature1 ?creature3) (eats ?creature3 ?creature2))
+
+(fact (eats shark big-fish))
+(fact (eats big-fish small-fish))
+(fact (eats domo kittens))
+(fact (eats kittens small-fish))
+(fact (eats zombie brains))
+(fact (append (1 2) (3 4) (1 2 3 4)))
+
+(fact (eats small-fish shrimp))
+
+(fact (food-chain-v2 ?a ?b) (eats ?a ?b))
+(fact (food-chain-v2 ?a ?b) (eats ?a ?c) (food-chain-v2 ?c ?b))
+
+(fact (append () ?b ?b))
+(fact (append (?a . ?r) ?y (?a . ?z)) (append ?r ?y ?z))
+
+
+
+(fact (last-element (?x) ?x))
+(fact (last-element (?car . ?cdr) ?x) (last-element ?cdr ?x))
+
+;(fact (contains ?elem ?lst) (append ?sublst1 ?elem ?sublst2) (contains ?sublst2 ;lst?) (contains ?sublst1 ?lst))
+
+(fact (contains ?x (?x . ?cdr)))
+(fact (contains ?elem (?car . ?cdr)) (contains ?elem ?cdr))
+
+
+;(query (prefix (1 2 3) (1 2 3 4 5)))
+;expect success
+
+(fact (prefix () ?any-list))
+(fact (prefix (?car . ?cdr) (?car . ?rest)) (prefix ?cdr ?rest))
+
+;Implements math in logic
+
+(fact (succ 0 1))
+(fact (succ 1 2))
+(fact (succ 2 3))
+(fact (succ 3 4))
+    (fact (succ 4 5))
+    (fact (succ 5 6))
+    (fact (succ 6 7))
+    (fact (succ 7 8))
+    (fact (succ 8 9))
+    (fact (succ 9 10))
+
+(fact (1 + ?x = ?y) (succ ?x ?y)))
+(fact (?x + ?y = ?z) (1 + ?x ))
+
